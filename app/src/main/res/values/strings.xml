@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Taiwan-eBus</string>
+
+    <string name="btn_Route">路線查詢</string>
+    <string name="btn_Station">站牌查詢</string>
+    <string name="btn_Bus">公車追蹤</string>
+    <string name="btn_Bike">公共自行車</string>
+
+    <string name="str_RouteSearch">您欲搭乘的公車路線?</string>
+    <string name="str_StationSearch">您欲前往的站牌?</string>
+    <string name="str_BusAdd"></string>
+
+    <string name="Inter_Version">https://ptx.transportdata.tw/MOTC/v2/Bus/DataVersion/InterCity?$format=JSON</string>
+    <string name="Taipei_Version">https://ptx.transportdata.tw/MOTC/v2/Bus/DataVersion/City/Taipei?$format=JSON</string>
+    <string name="NewTaipei_Version">https://ptx.transportdata.tw/MOTC/v2/Bus/DataVersion/City/NewTaipei?$format=JSON</string>
+
+</resources>
