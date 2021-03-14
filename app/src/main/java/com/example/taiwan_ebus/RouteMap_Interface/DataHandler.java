@@ -1,7 +1,11 @@
 package com.example.taiwan_ebus.RouteMap_Interface;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -18,11 +22,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DataHandler extends Handler {
-    private FragmentActivity MainView;
+    private LayoutInflater MainView;
     private ListView StationList;
     private View ViewElement;
 
-    public DataHandler(FragmentActivity FrameView, View PreView){
+    public DataHandler(LayoutInflater FrameView, View PreView){
         MainView = FrameView;
         ViewElement = PreView;
     }
@@ -55,5 +59,6 @@ public class DataHandler extends Handler {
         }
 
         StationList = ViewElement.findViewById(R.id.RouteSta_List);
+        StationList.setAdapter(new RouteMapList_Adapter(MainView, RouteNameList, RouteUIDList, null));
     }
 }

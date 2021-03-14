@@ -42,7 +42,7 @@ public class Main_Listener {
                         RS_Controller = new RouteSearch_Interface(PageRead, MainInterface);
                     }
                     else{
-                        RS_Controller.Start();
+                        RS_Controller.setMainActivity(PageRead, MainInterface);
                     }
                     break;
                 case 1:

@@ -36,7 +36,7 @@ public class RouteMap_SubUI extends Fragment {
         View OutputDirection = inflater.inflate(R.layout.direction, container, false);
         /*取得路線站序*/
         FragmentActivity FrameUI = this.getActivity();
-        DataHandler UI_Updater = new DataHandler(FrameUI, OutputDirection);
+        DataHandler UI_Updater = new DataHandler(inflater, OutputDirection);
         String RouteUID = Info.getRouteUID();
         Thread getRouteMap = new Thread(new getRouteMap(FrameUI, RouteUID, Direction, UI_Updater));
         getRouteMap.start();
