@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.taiwan_ebus.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.zip.Inflater;
 
 public class RouteMapList_Adapter extends BaseAdapter {
@@ -21,7 +22,7 @@ public class RouteMapList_Adapter extends BaseAdapter {
     /*取得所需資料*/
     private ArrayList<String> StopNameList;
     private ArrayList<String> StopUIDList;
-    private ArrayList<String> ArrMinList;
+    private HashMap<String, String> ArrMinList;
     private ArrayList<String> BusList;
 
     /*避免重新加載*/
@@ -31,17 +32,28 @@ public class RouteMapList_Adapter extends BaseAdapter {
         Button BusNum;
     }
 
-    /*建構子, 初始化取得資料*/
-    public RouteMapList_Adapter(LayoutInflater inflater, ArrayList<String> StopList, ArrayList<String> StaUIDList, ArrayList<String> Bus){
+    /*建構子, 初始化*/
+    public RouteMapList_Adapter(LayoutInflater inflater){
         ListLayout = inflater;
-        this.StopNameList = StopList;
-        this.StopUIDList = StaUIDList;
-        this.BusList = Bus;
+    }
+
+    public void UpdateStation(ArrayList<String> StopList, ArrayList<String> UIDList){
+        StopNameList = StopList;
+        StopUIDList = UIDList;
+    }
+
+    public void UpdateArrTime(HashMap<String, String> ArrTime){
+        ArrMinList = ArrTime;
     }
 
     @Override
     public int getCount() {
-        return StopNameList.size();
+        if(StopNameList != null) {
+            return StopNameList.size();
+        }
+        else{
+            return 0;
+        }
     }
 
     @Override
@@ -71,8 +83,14 @@ public class RouteMapList_Adapter extends BaseAdapter {
         }
 
         /*置入資料*/
-        holder.StaName.setText(StopNameList.get(position));
-        holder.ArrTime.setText(StopUIDList.get(position));
+        if(StopNameList != null && StopNameList.size() > position) {
+            holder.StaName.setText(StopNameList.get(position));
+        }
+        if(StopUIDList != null && ArrMinList != null && StopUIDList.size() > position){
+            String StopUID = StopUIDList.get(position);
+            holder.ArrTime.setText(ArrMinList.get(StopUID));
+        }
+
         return convertView;
     }
 }

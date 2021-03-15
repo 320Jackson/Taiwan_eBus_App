@@ -9,14 +9,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:text="讀取中"
+        android:layout_gravity="center" />
 
     <TextView
         android:id="@+id/StationName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:text=""
+        android:layout_gravity="center" />
 
     <Button
         android:id="@+id/BusMoving"

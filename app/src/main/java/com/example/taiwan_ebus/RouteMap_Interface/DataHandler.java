@@ -13,6 +13,7 @@ import android.widget.ListView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.taiwan_ebus.Database.RouteInfo;
 import com.example.taiwan_ebus.R;
 
 import org.json.JSONException;
@@ -22,15 +23,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DataHandler extends Handler {
-    private LayoutInflater MainView;
-    private ListView StationList;
-    private View ViewElement;
-
-    public DataHandler(LayoutInflater FrameView, View PreView){
-        MainView = FrameView;
-        ViewElement = PreView;
-    }
-
     public void handleMessage(Message msg){
         /*取得資料*/
         if(msg.what == 0){
@@ -58,7 +50,7 @@ public class DataHandler extends Handler {
             }
         }
 
-        StationList = ViewElement.findViewById(R.id.RouteSta_List);
-        StationList.setAdapter(new RouteMapList_Adapter(MainView, RouteNameList, RouteUIDList, null));
+        /*更新站牌ListView*/
+        UpdateList.getInstance().UpdateStation(RouteNameList, RouteUIDList);
     }
 }

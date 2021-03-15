@@ -17,7 +17,11 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.example.taiwan_ebus.Database.RouteInfo;
 import com.example.taiwan_ebus.Database.db_Task.getRouteMap;
+import com.example.taiwan_ebus.InternetTask.VariationData.EstimatedArrTime;
 import com.example.taiwan_ebus.R;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class RouteMap_SubUI extends Fragment {
     /*橋接器及內容*/
@@ -35,12 +39,18 @@ public class RouteMap_SubUI extends Fragment {
         /*載入子視窗畫面*/
         View OutputDirection = inflater.inflate(R.layout.direction, container, false);
         /*取得路線站序*/
-        FragmentActivity FrameUI = this.getActivity();
-        DataHandler UI_Updater = new DataHandler(inflater, OutputDirection);
-        String RouteUID = Info.getRouteUID();
-        Thread getRouteMap = new Thread(new getRouteMap(FrameUI, RouteUID, Direction, UI_Updater));
+        DataHandler UI_Updater = new DataHandler();
+        setListView(OutputDirection);
+        Thread getRouteMap = new Thread(new getRouteMap(this.getActivity(), Info.getRouteUID(), Direction, UI_Updater));
         getRouteMap.start();
+        TimerTask Task = new EstimatedArrTime(Info, Direction);
+        Timer CountTime = new Timer();
+        CountTime.schedule(Task, 0, 20000);
         return OutputDirection;
+    }
+
+    private void setListView(View Element){
+        UpdateList.getInstance().Initialization(Element, this.getLayoutInflater());
     }
 
     @Override

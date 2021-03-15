@@ -37,7 +37,7 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public int getItemCount() {
         /*頁面總數設定*/
-        return Pages.size();
+        return 1;
     }
 
     @Override

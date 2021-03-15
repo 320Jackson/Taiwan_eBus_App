@@ -8,7 +8,9 @@ import androidx.core.view.ActionProvider;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.taiwan_ebus.Database.DataBase;
+import com.example.taiwan_ebus.Database.RouteInfo;
 import com.example.taiwan_ebus.Database.RouteMap;
+import com.example.taiwan_ebus.InternetTask.VariationData.EstimatedArrTime;
 import com.example.taiwan_ebus.RouteMap_Interface.DataHandler;
 
 import org.json.JSONArray;

@@ -43,4 +43,7 @@ public interface db_Interface {
     /*取得路線站序*/
     @Query("SELECT * FROM RouteMap WHERE RouteUID = :RouteUID AND Direction = :Direction")
     RouteMap getMapObj(String RouteUID, int Direction);
+    /*取得指定路線*/
+    @Query("SELECT * FROM RouteInfo WHERE RouteUID = :RouteUID")
+    RouteInfo getInfoObj(String RouteUID);
 }
