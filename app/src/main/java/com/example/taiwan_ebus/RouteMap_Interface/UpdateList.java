@@ -1,11 +1,8 @@
 package com.example.taiwan_ebus.RouteMap_Interface;
 
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
-
-import androidx.room.Update;
 
 import com.example.taiwan_ebus.R;
 

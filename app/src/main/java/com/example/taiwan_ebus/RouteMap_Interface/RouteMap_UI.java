@@ -30,9 +30,6 @@ public class RouteMap_UI extends FragmentActivity {
     public RouteInfo getRouteInfo(){
         return ResultInfo;
     }
-    public int getDirection(){
-        return UI_Frame.getCurrentItem();
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,11 +45,12 @@ public class RouteMap_UI extends FragmentActivity {
         /*設定元件*/
         DirectionTags = findViewById(R.id.Direction_Title);
         UI_Frame = findViewById(R.id.ListContainer);
+        //UI_Frame.setOffscreenPageLimit(2);
         RouteTitle = findViewById(R.id.RouteTitle);
 
         /*設定適配器*/
         RouteTitle.setText(ResultInfo.getRouteName());
-        PageAdapter = new DirectionChange(this, getDirection_SubUI());
+        PageAdapter = new DirectionChange(getSupportFragmentManager(), getLifecycle(), getDirection_SubUI());
         UI_Frame.setAdapter(PageAdapter);
 
         /*設定TabLayout*/
@@ -64,9 +62,7 @@ public class RouteMap_UI extends FragmentActivity {
     public void onBackPressed() {
         super.onBackPressed();
         /*返回鍵動作*/
-        if(UI_Frame.getCurrentItem() > 0){
-            UI_Frame.setCurrentItem(UI_Frame.getCurrentItem() - 1);
-        }
+        UI_Frame.clearFocus();
     }
 
     private ArrayList<Fragment> getDirection_SubUI(){
